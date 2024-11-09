@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('description_id');
             $table->string('title');
+            $table->text('image');
             $table->string('author');
             $table->string('pages');
             $table->integer('stock');
