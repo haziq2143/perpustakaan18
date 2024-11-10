@@ -1,4 +1,14 @@
 <x-app-layout>
+    @if (session('loan'))
+        <p>Loan session exists!</p>
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success"
+            });
+        </script>
+    @endif
     <div class="h-30 w-full my-5">
         <h1 class="md:text-3xl text-2xl font-bold text-primary  ">Buku
             Perpustakaan</h1>
@@ -43,4 +53,7 @@
         @endforeach
     </div>
 
+    <button id="scan" onclick="startScan()">Scan Qr</button>
+
+    <div id="resultMessage"></div>
 </x-app-layout>
