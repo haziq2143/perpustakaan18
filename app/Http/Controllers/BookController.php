@@ -60,7 +60,7 @@ class BookController extends Controller
 
         Book::create($validated);
 
-        return redirect('/books');
+        return redirect('/books')->with('book', true);
     }
 
     /**

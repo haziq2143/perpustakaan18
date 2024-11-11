@@ -19,6 +19,7 @@
                 <x-navbar.nav-link href="/home">Home</x-navbar.nav-link>
                 <x-navbar.nav-link href="/books">Books</x-navbar.nav-link>
                 <x-navbar.nav-link href="/loans">Loan</x-navbar.nav-link>
+                <x-navbar.nav-link href="/returns">Return</x-navbar.nav-link>
             </ul>
         </div>
     </div>

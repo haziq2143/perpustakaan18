@@ -1,17 +1,17 @@
 <x-app-layout>
-    @if (session('stock'))
+    @if (session('failed'))
         <script>
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Stock Buku Habis",
+                text: "",
             });
             {{ session()->forget('stock') }}
         </script>
     @endif
     <div class="w-full">
-        <h1 class="text-primary font-bold text-4xl text-center ">Pinjam Buku</h1>
-        <form action="/loans" method="POST">
+        <h1 class="text-primary font-bold text-4xl text-center ">Pengembalian Buku</h1>
+        <form action="/returns" method="POST">
             @csrf
             <div id="readerBook" class="md:w-1/3 w-full mx-auto mt-3"></div>
             <div class="w-full lg:w-1/2 mx-auto mt-4 flex justify-around">
@@ -31,7 +31,7 @@
             </div>
             <div class="md:w-1/2 w-full mt-10 mx-auto ">
                 <button type="submit"
-                    class="px-4 py-3  md:px-5 md:py-3 bg-primary text-accent font-bold rounded-lg ">Pinjam</button>
+                    class="px-4 py-3  md:px-5 md:py-3 bg-primary text-accent font-bold rounded-lg ">Kembalikan</button>
             </div>
         </form>
 

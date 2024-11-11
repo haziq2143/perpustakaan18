@@ -1,10 +1,25 @@
 <x-app-layout>
     @if (session('loan'))
-        <p>Loan session exists!</p>
         <script>
             Swal.fire({
                 title: "Good job!",
-                text: "You clicked the button!",
+                text: "Peminjaman Berhasil!",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('book'))
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "Buku Berhasil Ditambahkan!",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('success'))
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "Buku Berhasil Dikembalikan!",
                 icon: "success"
             });
         </script>
@@ -53,7 +68,5 @@
         @endforeach
     </div>
 
-    <button id="scan" onclick="startScan()">Scan Qr</button>
 
-    <div id="resultMessage"></div>
 </x-app-layout>

@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Book;
+use App\Models\Fine;
 use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-
-class LoanController extends Controller
+class ReturnController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('loans.index');
+        return view('returns.index');
     }
 
     /**
@@ -33,33 +33,47 @@ class LoanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'code_book' => 'required|max:11|min:11',
-            'code_unique' => 'required|min:6|max:6'
+
+            'code_book' => 'required',
+            'code_unique' => 'required'
         ]);
+
+        $user = User::where('code_unique', $validated['code_unique'])->first();
+
         $book = Book::where('code_book', $validated['code_book'])->first();
 
-        if ($book->stock > 0) {
-            $user = User::where('code_unique', $validated['code_unique'])->first();
+        $loan = Loan::where('book_id', $book->id)
+            ->where('user_id', $user->id)
+            ->whereNull('return_date')
+            ->first();
 
-            $validated['loan_date'] = Carbon::now()->format('Y-m-d');
-            $validated['due_date'] = Carbon::now()->addDays(3)->format('Y-m-d');
-            $validated['status'] = "Dipinjam";
+        $loan->update([
+            'return_date' =>  Carbon::now()->format('Y-m-d')
+        ]);
 
-            Loan::create([
-                'book_id' => $book->id,
-                'user_id' => $user->id,
-                'loan_date' => $validated['loan_date'],
-                'due_date' => $validated['due_date'],
-                'status' => $validated['status']
+        $returnDate = Carbon::parse($loan->return_date);
+        $dueDate = Carbon::parse($loan->due_date);
+
+        $daysDifference = $dueDate->diffInDays($returnDate);
+        $book->update([
+            'stock' => $book->stock + 1,
+        ]);
+
+        $loan->update([
+            'status' => 'Dikembalikan'
+        ]);
+
+        if ($daysDifference > 0) {
+            Fine::create([
+                'loan_id' => $loan->id,
+                'amount' => 5000 * $daysDifference,
+                'paid' => FALSE
             ]);
 
-            $book->update([
-                'stock' => $book->stock - 1
-            ]);
 
-            return redirect('/books')->with('loan', true);
+            return redirect('/books');
         } else {
-            return redirect('/loans')->with('stock', true);
+            return redirect('/books')->with('success', true);
         }
     }
 
