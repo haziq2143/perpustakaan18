@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Document</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="font-poppins">
@@ -23,21 +23,22 @@
             </div>
             <div class="lg:w-1/2 w-full mt-10 mx-auto">
                 <h2 class="text-center py-10 lg:text-3xl text-2xl font-semibold text-primary">Sign-Up</h2>
-                <form action="" class="mx-14 ">
+                <form action="/authentications/store" method="POST" class="mx-14 ">
+                    @csrf
                     <label for="name" class="text-xl font-medium text-primary block">Name</label>
-                    <input type="text" id="name"
+                    <input type="text" id="name" name="name"
                         class="lg:w-[90%] w-full text-primary lg:text-xl text-lg  border border-primary  px-2 py-3 rounded-md focus:ring-1 focus:ring-primary focus:outline-none "
                         placeholder="Your Name...">
                     <label for="email" class="text-xl font-medium text-primary mt-5 block">Email</label>
-                    <input type="text" id="email"
+                    <input type="text" id="email" name="email"
                         class="lg:w-[90%] w-full text-primary lg:text-xl text-lg  border border-primary  px-2 py-3 rounded-md focus:ring-1 focus:ring-primary focus:outline-none "
                         placeholder="Your Email...">
                     <label for="password" class="text-xl font-medium text-primary mt-5 block">Password</label>
-                    <input type="password" id="password"
+                    <input type="password" id="password" name="password"
                         class="lg:w-[90%] w-full text-primary lg:text-xl text-lg  border border-primary px-2 py-3 rounded-md focus:ring-1 focus:ring-primary focus:outline-none "
                         placeholder="Your Email...">
 
-                    <button
+                    <button id="btn"
                         class="lg:w-[90%] w-full px-2 lg:py-4 py-3 text-accent font-bold lg:text-xl text-lg bg-primary lg:hover:bg-emerald-700 rounded-md mt-5">Sign-Up</button>
                     <p class="text-sm mt-2">Already have account? <a href="/" class="text-primary">Sign-In</a>
                         Now</p>
@@ -46,6 +47,7 @@
         </div>
     </main>
 
+    @vite('resources/js/auth.js')
 </body>
 
 </html>

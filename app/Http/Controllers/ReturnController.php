@@ -64,14 +64,14 @@ class ReturnController extends Controller
         ]);
 
         if ($daysDifference > 0) {
-            Fine::create([
+            $fine = Fine::create([
                 'loan_id' => $loan->id,
                 'amount' => 5000 * $daysDifference,
                 'paid' => FALSE
             ]);
 
 
-            return redirect('/books');
+            return redirect('/fines/' . $fine->id);
         } else {
             return redirect('/books')->with('success', true);
         }
