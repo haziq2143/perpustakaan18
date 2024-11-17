@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-      "./resources/**/*.blade.php", // Cek path yang benar
-      "./resources/**/*.js",
-      "./resources/**/*.vue",
-    ],
+  content: [
+    "./resources/views/**/*.blade.php", // Cek folder views jika file berada di sana
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+  ],
     theme: {
       extend: {
         boxShadow: {

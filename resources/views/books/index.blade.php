@@ -43,7 +43,8 @@
                 <div class="w-2/3 p-3">
                     <h3 class="text-lg font-semibold text-slate-700">Tanggal Post:
                         {{ $book->created_at->format('Y-m-d') }}</h3>
-                    <h2 class="text-2xl font-bold text-primary">{{ $book->title }}</h2>
+                    <a href="/books/{{ $book->title }}"
+                        class="text-2xl font-bold text-primary hover:text-green-700">{{ $book->title }}</a>
                     <h4 class="text-md font-medium text-slate-700">Penulis: <span
                             class="text-emerald-700">{{ $book->author }}</span>
                     </h4>
