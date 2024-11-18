@@ -20,6 +20,12 @@ class BookController extends Controller
         return view('books.index', compact('books'));
     }
 
+    public function cari(Request $request)
+    {
+        $books = Book::where('title', 'LIKE', '%' . $request->search . '%')->get();
+        return view('books.index', compact('books'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

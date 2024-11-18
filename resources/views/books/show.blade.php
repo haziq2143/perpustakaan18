@@ -64,4 +64,21 @@
         </div>
 
     </div>
+
+    <div class="w-full mt-14">
+        <h1 class="text-3xl font-bold text-primary">Komentar:</h1>
+        <div class="w-full p-20">
+            <div class="komentar mb-6">
+                <h2 class="text-xl font-semibold text-primary">haziq</h2>
+                <p class="text-sm text-gray-400">10 Minutes Ago</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, et error. Ipsa, beatae nemo. Ipsa ab
+                    hic
+                    possimus consequatur ratione, nisi dicta asperiores ex nesciunt odit vero qui eos natus vel
+                    recusandae
+                    sint inventore debitis sed mollitia. Laudantium illum nostrum earum perspiciatis tenetur inventore,
+                    laborum at quos quaerat sequi! Aliquid.</p>
+                <hr class="mt-2">
+            </div>
+        </div>
+    </div>
 </x-app-layout>

@@ -17,6 +17,7 @@ Route::post('/authentications', [AuthController::class, 'authentication']);
 Route::post('/authentications/store', [AuthController::class, 'store']);
 
 Route::get('/admin', [HomeController::class, 'index']);
+Route::get('/books/search', [BookController::class, 'cari']);
 Route::resource('/books', BookController::class);
 Route::resource('/loans', LoanController::class);
 Route::resource('/returns', ReturnController::class);
