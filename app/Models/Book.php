@@ -32,4 +32,8 @@ class Book extends Model
     {
         return $this->hasMany(Loan::class);
     }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

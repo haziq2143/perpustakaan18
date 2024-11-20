@@ -66,19 +66,69 @@
     </div>
 
     <div class="w-full mt-14">
-        <h1 class="text-3xl font-bold text-primary">Komentar:</h1>
-        <div class="w-full p-20">
-            <div class="komentar mb-6">
-                <h2 class="text-xl font-semibold text-primary">haziq</h2>
-                <p class="text-sm text-gray-400">10 Minutes Ago</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, et error. Ipsa, beatae nemo. Ipsa ab
-                    hic
-                    possimus consequatur ratione, nisi dicta asperiores ex nesciunt odit vero qui eos natus vel
-                    recusandae
-                    sint inventore debitis sed mollitia. Laudantium illum nostrum earum perspiciatis tenetur inventore,
-                    laborum at quos quaerat sequi! Aliquid.</p>
-                <hr class="mt-2">
+        <h1 class="text-3xl font-bold text-primary mb-2">Komentar:</h1>
+        <form class="md:w-1/2 w-full mb-5" action="/comments/{{ $book->id }}" method="POST">
+            @csrf
+            <label for="comment" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <input type="text" id="comment" name="comment"
+                    class="block w-full p-3 ps-10 text-lg  border border-primary rounded-lg bg-gray-50 focus:ring-primary focus:border-primary text-primary"
+                    placeholder="Comment" />
+                <button type="submit"
+                    class="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-600 font-medium rounded-lg text-sm px-4 py-2 ">Send</button>
             </div>
+        </form>
+        <div class="w-full lg:p-20 p-5">
+
+            @foreach ($comments as $comment)
+                @if ($comment->user_id == Auth::id())
+                    <div class="komentar mb-6">
+                        <div class="flex justify-between">
+                            <h2 class="text-xl font-semibold text-primary">{{ $comment->user->name }}</h2>
+                            <form action="/comments/{{ $comment->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <svg class="w-5" viewBox="0 -0.5 21 21" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        fill="#000000">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <title>delete [#ff0000]</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <defs> </defs>
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview"
+                                                    transform="translate(-179.000000, -360.000000)" fill="#ff0000">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path
+                                                            d="M130.35,216 L132.45,216 L132.45,208 L130.35,208 L130.35,216 Z M134.55,216 L136.65,216 L136.65,208 L134.55,208 L134.55,216 Z M128.25,218 L138.75,218 L138.75,206 L128.25,206 L128.25,218 Z M130.35,204 L136.65,204 L136.65,202 L130.35,202 L130.35,204 Z M138.75,204 L138.75,200 L128.25,200 L128.25,204 L123,204 L123,206 L126.15,206 L126.15,220 L140.85,220 L140.85,206 L144,206 L144,204 L138.75,204 Z"
+                                                            id="delete-[#ff0000]"> </path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                        <p class="text-sm text-gray-400">{{ $comment->created_at->diffForHumans() }}</p>
+                        <p>{{ $comment->comment }}</p>
+                        <hr class="mt-2">
+                    </div>
+                @else
+                    <div class="komentar mb-6">
+                        <h2 class="text-xl font-semibold text-primary">{{ $comment->user->name }}</h2>
+                        <p class="text-sm text-gray-400">{{ $comment->created_at->diffForHumans() }}</p>
+                        <p>{{ $comment->comment }}</p>
+                        <hr class="mt-2">
+                    </div>
+                @endif
+            @endforeach
+
         </div>
     </div>
 </x-app-layout>

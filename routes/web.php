@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Fine;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
@@ -7,7 +9,7 @@ use App\Http\Controllers\FineController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ReturnController;
-use App\Models\Fine;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', [AuthController::class, 'signIn']);
 Route::get('/authentications', [AuthController::class, 'signUp']);
@@ -22,5 +24,7 @@ Route::resource('/books', BookController::class);
 Route::resource('/loans', LoanController::class);
 Route::resource('/returns', ReturnController::class);
 
+Route::post('/comments/{books}', [CommentController::class, 'store']);
+Route::delete('/comments/{books}', [CommentController::class, 'destroy']);
 Route::get('/fines/{fine}', [FineController::class, 'index']);
 Route::post('/fines/{fine}', [FineController::class, 'store']);

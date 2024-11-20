@@ -51,25 +51,25 @@
             class="px-4 py-3 bg-primary hover:bg-emerald-700 text-accent font-bold rounded-lg">Tambah
             Buku</a>
     </div>
-    <div class="w-full md:flex md:flex-wrap justify-center">
+    <div class="w-full md:flex md:flex-wrap justify-center gap-10">
 
         @foreach ($books as $book)
-            <div class=" shadow-custom md:w-2/5 w-full h-60 flex md:mx-10  my-4">
-                <div class="w-1/3">
+            <div class=" shadow-custom md:w-1/3 w-full h-60 md:h-auto flex my-4 md:my-0">
+                <div class="lg:w-1/3 w-1/4">
                     <img src="{{ asset($book->image) }}" alt="" class="h-full">
                 </div>
-                <div class="w-2/3 p-3">
-                    <h3 class="text-lg font-semibold text-slate-700">Tanggal Post:
+                <div class="lG:w-2/3 w-3/4 p-3">
+                    <h3 class="lg:text-lg text-md font-semibold text-slate-700">Tanggal Post:
                         {{ $book->created_at->format('Y-m-d') }}</h3>
                     <a href="/books/{{ $book->title }}"
-                        class="text-2xl font-bold text-primary hover:text-green-700">{{ $book->title }}</a>
-                    <h4 class="text-md font-medium text-slate-700">Penulis: <span
+                        class="lg:text-2xl text-xl font-bold text-primary hover:text-green-700">{{ $book->title }}</a>
+                    <h4 class="lg:text-md text-sm font-medium text-slate-700">Penulis: <span
                             class="text-emerald-700">{{ $book->author }}</span>
                     </h4>
-                    <h4 class="pt-5 text-md font-thin text-black">Jumlah Halaman: {{ $book->pages }}</h4>
-                    <h4 class="text-md font-thin text-black">Stok: {{ $book->stock }}</h4>
-                    <h4 class="text-md font-thin text-black">Nomor Rak: {{ $book->shelf_number }}</h4>
-                    <h4 class="text-md font-thin text-black">Kode Buku: {{ $book->code_book }}</h4>
+                    <h4 class="pt-5 lg:text-md text-sm font-thin text-black">Jumlah Halaman: {{ $book->pages }}</h4>
+                    <h4 class="lg:text-md text-sm font-thin text-black">Stok: {{ $book->stock }}</h4>
+                    <h4 class="lg:text-md text-sm font-thin text-black">Nomor Rak: {{ $book->shelf_number }}</h4>
+                    <h4 class="lg:text-md text-sm font-thin text-black">Kode Buku: {{ $book->code_book }}</h4>
                     <div class="flex justify-end text-sm">
                         <p>
                             <a href="/books/{{ $book->id }}/edit"

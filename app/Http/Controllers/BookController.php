@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Description;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::query()->get();
+
         return view('books.index', compact('books'));
     }
 
@@ -75,7 +77,8 @@ class BookController extends Controller
     public function show(string $title)
     {
         $book = Book::where('title', $title)->first();
-        return view('books.show', compact('book'));
+        $comments = Comment::where('book_id', $book->id)->get();
+        return view('books.show', compact('book', 'comments'));
     }
 
     /**

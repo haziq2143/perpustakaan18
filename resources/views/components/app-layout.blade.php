@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Document</title>
-    <script src="{{ asset('js/reader.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/reader.js') }}" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -139,6 +139,7 @@
             }
         }
     </script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>
