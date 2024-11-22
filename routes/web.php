@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [AuthController::class, 'signIn']);
 Route::get('/authentications', [AuthController::class, 'signUp']);
@@ -20,6 +21,7 @@ Route::post('/authentications/store', [AuthController::class, 'store']);
 
 
 Route::get('/admin', [HomeController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/books/search', [BookController::class, 'cari']);
 Route::resource('/books', BookController::class);
 Route::resource('/loans', LoanController::class);

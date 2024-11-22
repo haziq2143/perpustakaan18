@@ -11,7 +11,7 @@
     <title>Document</title>
     {{-- <script src="{{ asset('js/reader.js') }}" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script type="module" src="{{ mix('js/app.js') }}"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>

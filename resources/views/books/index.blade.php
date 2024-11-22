@@ -46,11 +46,13 @@
                 class="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-600 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
         </div>
     </form>
-    <div class="flex justify-end mb-4">
-        <a href="/books/create"
-            class="px-4 py-3 bg-primary hover:bg-emerald-700 text-accent font-bold rounded-lg">Tambah
-            Buku</a>
-    </div>
+    @if (Auth::user()->role == 'admin')
+        <div class="flex justify-end mb-4">
+            <a href="/books/create"
+                class="px-4 py-3 bg-primary hover:bg-emerald-700 text-accent font-bold rounded-lg">Tambah
+                Buku</a>
+        </div>
+    @endif
     <div class="w-full md:flex md:flex-wrap justify-center gap-10">
 
         @foreach ($books as $book)
@@ -70,18 +72,20 @@
                     <h4 class="lg:text-md text-sm font-thin text-black">Stok: {{ $book->stock }}</h4>
                     <h4 class="lg:text-md text-sm font-thin text-black">Nomor Rak: {{ $book->shelf_number }}</h4>
                     <h4 class="lg:text-md text-sm font-thin text-black">Kode Buku: {{ $book->code_book }}</h4>
-                    <div class="flex justify-end text-sm">
-                        <p>
-                            <a href="/books/{{ $book->id }}/edit"
-                                class="text-yellow-500 hover:text-yellow-300">Edit</a> |
-                        <form action="/books/{{ $book->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-400">Delete</button>
-                        </form>
-                        </p>
+                    @if (Auth::user()->role == 'admin')
+                        <div class="flex justify-end text-sm">
+                            <p>
+                                <a href="/books/{{ $book->id }}/edit"
+                                    class="text-yellow-500 hover:text-yellow-300">Edit</a> |
+                            <form action="/books/{{ $book->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-400">Delete</button>
+                            </form>
+                            </p>
 
-                    </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endforeach
