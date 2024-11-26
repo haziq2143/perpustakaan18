@@ -56,7 +56,7 @@
     <div class="w-full md:flex md:flex-wrap justify-center gap-10">
 
         @foreach ($books as $book)
-            <div class=" shadow-custom md:w-1/3 w-full h-60 md:h-auto flex my-4 md:my-0">
+            <div class=" shadow-custom md:w-1/3 w-full h-60 md:h-auto flex my-4 md:my-0  animate-fade-in">
                 <div class="lg:w-1/3 w-1/4">
                     <img src="{{ asset($book->image) }}" alt="" class="h-full">
                 </div>

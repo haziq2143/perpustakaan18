@@ -17,7 +17,21 @@ export default {
             'primary' : '#1C5F33',
             'accent' : '#FFD966',
             'netral' : '#F0F0F0'
-          }
+          },
+          keyframes: {
+            'fade-in': {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            'slide-in-left': {
+              '0%': { transform: 'translateX(-100%)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            },
+          },
+          animation: {
+            'fade-in': 'fade-in 0.5s ease-in-out',
+            'slide-in-left': 'slide-in-left 0.5s ease-out',
+          },
       },
       
     },
