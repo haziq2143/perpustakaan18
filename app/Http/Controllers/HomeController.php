@@ -29,4 +29,9 @@ class HomeController extends Controller
         return view('admin.home.index', compact('dates', 'totals', 'book', 'user', 'data'));
         // return dd($loans);
     }
+
+    public function home()
+    {
+        return view('home.index');
+    }
 }
