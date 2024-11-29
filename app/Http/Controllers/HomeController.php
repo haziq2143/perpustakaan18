@@ -32,6 +32,19 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('home.index');
+        $books = Book::query()->get();
+        $countBooks = $books->count();
+
+        $users = User::where('role', 'user')->get();
+        $countUsers = $users->count();
+        $loans = Loan::query()->get();
+        $countLoans = $loans->count();
+
+        $topBooks = Book::withCount('loan') // Hitung jumlah loans untuk setiap buku
+            ->orderBy('loan_count', 'desc') // Urutkan berdasarkan jumlah loans terbanyak
+            ->limit(3) // Ambil 3 buku teratas
+            ->get();
+
+        return view('home.index', compact('books', 'countBooks', 'countUsers', 'countLoans', 'topBooks'));
     }
 }
