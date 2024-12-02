@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [AuthController::class, 'signIn']);
@@ -32,3 +33,5 @@ Route::post('/comments/{books}', [CommentController::class, 'store']);
 Route::delete('/comments/{books}', [CommentController::class, 'destroy']);
 Route::get('/fines/{fine}', [FineController::class, 'index']);
 Route::post('/fines/{fine}', [FineController::class, 'store']);
+
+Route::get('/export', [ExportController::class, 'export']);

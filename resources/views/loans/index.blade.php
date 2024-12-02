@@ -11,6 +11,7 @@
     @endif
     <div class="w-full">
         <h1 class="text-primary font-bold text-4xl text-center ">Pinjam Buku</h1>
+
         <form action="/loans" method="POST">
             @csrf
             <div id="readerBook" class="md:w-1/3 w-full mx-auto mt-3"></div>

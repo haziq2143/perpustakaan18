@@ -1,6 +1,7 @@
 <x-app-layout>
     <div class="md:p-4 ">
-        <div class="grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-1 mb-4">
+        <a href="/export" class="px-4 py-3 bg-primary text-accent font-semibold rounded-md ">Cetak Data Loan</a>
+        <div class="mt-10 grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-1 mb-4">
             <div class=" h-24 rounded bg-primary ">
                 <p class="text-sm text-accent p-2 font-semibold">Users</p>
                 <h1 class="text-xl text-accent font-bold flex justify-center items-center"><img
